@@ -1,0 +1,39 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.outline{
+    height: 400px;
+    width: 300px;
+    /* border: 2px solid red; */
+    background-color:#77989329;
+    box-shadow: 2px 3px 4px black;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+ }
+
+ #heading{
+     text-align: center;
+     text-shadow: 2px 3px 4px grey;
+ }
+
+.text{
+    text-align: center;
+}
+
+.img img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.controls{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    width: 135px;
+    margin-left: 85px;
+    margin-top:30px;
+}

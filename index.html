@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stark_music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body style="background-image: linear-gradient(to right,pink,#7b76c3);">
+    <div>
+        <h1 id="heading">STARK MUSIC</h1>
+        <div class="outline">
+            <div class="text">
+                <h1 id="title">Music_1</h1>
+                <h2 id="singer">Arijit singh</h2>
+                <div class="img">
+                    <img src="images/arc.jpg" alt="">
+                </div>
+                <div class="music">
+                    <audio src="music/stark_1.mp3" controls></audio>
+                </div>
+                <div class="controls">
+                    <i class="fas fa-backward" id="back" title="previous"></i>
+                    <i class="fas fa-play" id="play" title="play"></i>
+                    <i class="fas fa-forward" id="for" title="next"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const music = document.querySelector('audio');
+        const play = document.getElementById("play");
+        const title = document.getElementById("title");
+        const singer = document.getElementById("singer");
+        const previous = document.getElementById("back");
+        const next = document.getElementById("for");
+
+     
+
+        isplaying = false;
+        const playmusic = () => {
+            music.play();
+            play.classList.replace('fa-play', 'fa-pause');
+            isplaying = true;
+        };
+
+         const pausemusic = () => {
+            music.pause();
+            play.classList.replace('fa-pause', 'fa-play');
+            isplaying = false;
+        };
+
+        play.addEventListener("click", () => {
+            if (isplaying) {
+                pausemusic();
+            } else {
+                playmusic();
+            }
+        });
+
+
+        const songs = [
+            {
+                name: "stark_1",
+                title: "music_1",
+                singer: "arijit_1",
+            },
+            {
+                name: "stark_2",
+                title: "music_2",
+                singer: "arijit_2",
+            },
+            {
+                name: "stark_3",
+                title: "music_3",
+                singer: "arijit_3",
+            },
+        ]
+
+        const loadsongs = (songs) => {
+            title.textContent = songs.title;
+            singer.textContent = songs.singer;
+            music.src = "music/" + songs.name + ".mp3";
+        };
+
+        songindex = 0;
+
+        const nextsong = () => {
+            songindex = (songindex + 1) % songs.length;
+            loadsongs(songs[songindex]);
+            playmusic();
+        };
+
+        const presong = () => {
+            songindex = (songindex - 1 + songs.length) % songs.length;
+            loadsongs(songs[songindex]);
+            playmusic();
+        };
+        next.addEventListener("click", nextsong);
+        previous.addEventListener("click", presong);
+
+    </script>
+</body>
+
+</html>
